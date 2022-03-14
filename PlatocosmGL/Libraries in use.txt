@@ -1,0 +1,4 @@
+SDL2
+glew
+OpenGL 3.3
+stb-image

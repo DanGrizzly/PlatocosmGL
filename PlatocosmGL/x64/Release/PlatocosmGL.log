@@ -1,0 +1,14 @@
+﻿  Mesh.cpp
+D:\Danscode\PlatocosmGL\infrastructure\Mesh.cpp(47,65): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  main.cpp
+D:\Danscode\PlatocosmGL\main.cpp(47,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'unsigned __int64'
+D:\Danscode\PlatocosmGL\main.cpp(47,9): message : consider using '%zd' in the format string
+D:\Danscode\PlatocosmGL\main.cpp(47,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'unsigned __int64'
+D:\Danscode\PlatocosmGL\main.cpp(47,9): message : consider using '%zd' in the format string
+D:\Danscode\PlatocosmGL\main.cpp(100,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Generating code
+  2 of 657 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  PlatocosmGL.vcxproj -> D:\Danscode\PlatocosmGL\x64\Release\PlatocosmGL.exe
