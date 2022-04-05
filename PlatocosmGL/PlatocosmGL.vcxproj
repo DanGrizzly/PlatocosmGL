@@ -157,6 +157,7 @@
     <ClCompile Include="infrastructure\VAO.cpp" />
     <ClCompile Include="infrastructure\VBO.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="meshgen\BasicPlanet.cpp" />
     <ClCompile Include="meshgen\IcosphereCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="infrastructure\Texture.h" />
     <ClInclude Include="infrastructure\VAO.h" />
     <ClInclude Include="infrastructure\VBO.h" />
+    <ClInclude Include="meshgen\BasicPlanet.h" />
     <ClInclude Include="meshgen\IcosphereCreator.h" />
     <ClInclude Include="noisegen\PerlinNoise.hpp" />
     <ClInclude Include="resources\geometry.h" />

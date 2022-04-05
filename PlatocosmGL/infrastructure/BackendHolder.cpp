@@ -42,7 +42,7 @@ void BackendHolder::handleEvents(bool* quit) {
 	events[14] = 0; //R, reset Up
 	events[15] = 0; //C, camera mode
 	//events[16] is for F, toggles wireframe mode on KEYUP
-	events[17] = 0; //I, increase icosphere detail?
+	events[17] = 0; //I, increase icosphere detail? currently unused!
 
 	SDL_Event e;
 	while (SDL_PollEvent(&e) > 0) {

@@ -93,7 +93,7 @@ int IcosphereCreator::findMiddlePointIndex(int p1, int p2) {
 }
 
 void IcosphereCreator::subdivide(int n) {
-	if (detail == 6) {
+	if (detail > 7) {
 		return;
 	}
 	detail++;
@@ -117,12 +117,47 @@ void IcosphereCreator::subdivide(int n) {
 		}
 		IcosphereCreator::meshIndices = faces2;
 	}
+}
 
-	// done, now add triangles to mesh
-	/*foreach(var tri in faces)
-	{
-		this.geometry.TriangleIndices.Add(tri.v1);
-		this.geometry.TriangleIndices.Add(tri.v2);
-		this.geometry.TriangleIndices.Add(tri.v3);
-	}*/
+void IcosphereCreator::perlinise(int seednum) {
+	const siv::PerlinNoise::seed_type seed = seednum;
+
+	const siv::PerlinNoise perlin{ seed };
+	glm::vec3 newPosition;
+	glm::vec3 normalinput;
+	double x, y, z;
+	glm::vec3 perlinvalue;
+	glm::vec3 heightvalue;
+	double c = 0.1;
+	double d = 0.2;
+
+	for (int i = 0; i < IcosphereCreator::meshVertices.size(); i++) {
+		newPosition = IcosphereCreator::meshVertices[i].position;
+		normalinput = IcosphereCreator::meshVertices[i].normal;
+		x = normalinput[0];
+		y = normalinput[1];
+		z = normalinput[2];
+		heightvalue = glm::vec3(0.0);
+		for(int j = 0; j < 8; j++) {
+			perlinvalue = glm::vec3(perlin.normalizedOctave3D((x * c * j), (y * c * j), (z * c * j), 4));
+			heightvalue += glm::vec3(d) * normalinput * perlinvalue;
+		}
+		
+		if (glm::length(newPosition + heightvalue) <= glm::length(glm::vec3(0.98) * newPosition)) {
+			IcosphereCreator::meshVertices[i].position = glm::vec3(0.98) * newPosition;
+		}
+		else if (glm::length(newPosition + heightvalue) >= glm::length(glm::vec3(1.02) * newPosition)) {
+			IcosphereCreator::meshVertices[i].position = glm::vec3(1.02) * newPosition;
+		}
+		else {
+			IcosphereCreator::meshVertices[i].position += heightvalue;
+		}
+
+		//IcosphereCreator::meshVertices[i].position += heightvalue;
+	}
+
+	//prints:
+		//printf("x = %.6f, y = %.6f, z = %.6f, perlinvalue = %.6f, %.6f, %.6f\n", x, y, z, perlinvalue.x, perlinvalue.y, perlinvalue.z);
+		//printf("x = %.6f, y = %.6f, z = %.6f\n", IcosphereCreator::meshVertices[i].position.x, IcosphereCreator::meshVertices[i].position.y, IcosphereCreator::meshVertices[i].position.z);
+		//printf("x = %.6f, y = %.6f, z = %.6f, value added = %.6f, %.6f, %.6f\n", IcosphereCreator::meshVertices[i].position.x, IcosphereCreator::meshVertices[i].position.y, IcosphereCreator::meshVertices[i].position.z, heightvalue.x, heightvalue.y, heightvalue.z);
 }

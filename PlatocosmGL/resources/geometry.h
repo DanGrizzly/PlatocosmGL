@@ -52,11 +52,11 @@ GLuint triforceIndices[] =
 std::vector<Vertex> spherePrimeVertices =
 { //               COORDINATES            /            Normals             /           Color            /       TexCoord      //
     Vertex{glm::vec3(0,  PHI,  1),       glm::vec3(0,  PHI,  1),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(0, -PHI,  1),       glm::vec3(0, -PHI,  1),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(0,  PHI, -1),       glm::vec3(0,  PHI, -1),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(0, -PHI, -1),       glm::vec3(0, -PHI, -1),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(1,  0,  PHI),       glm::vec3(1,  0,  PHI),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(-1, 0,  PHI),       glm::vec3(-1, 0,  PHI),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(0, -PHI,  1),       glm::vec3(0, -PHI,  1),    glm::vec3(0.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(0,  PHI, -1),       glm::vec3(0,  PHI, -1),    glm::vec3(0.0f, 0.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(0, -PHI, -1),       glm::vec3(0, -PHI, -1),    glm::vec3(1.0f, 1.0f, 0.0f),    glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(1,  0,  PHI),       glm::vec3(1,  0,  PHI),    glm::vec3(1.0f, 0.0f, 0.0f),    glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(-1, 0,  PHI),       glm::vec3(-1, 0,  PHI),    glm::vec3(1.0f, 0.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
     Vertex{glm::vec3(1,  0, -PHI),       glm::vec3(1,  0, -PHI),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
     Vertex{glm::vec3(-1, 0, -PHI),       glm::vec3(-1, 0, -PHI),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},
     Vertex{glm::vec3(PHI,   1,  0),      glm::vec3(PHI,   1,  0),    glm::vec3(1.0f, 1.0f, 1.0f),    glm::vec2(0.0f, 0.0f)},

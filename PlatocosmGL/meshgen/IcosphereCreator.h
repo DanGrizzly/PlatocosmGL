@@ -8,6 +8,7 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "../infrastructure/datastructs.h"
+#include "../noisegen/PerlinNoise.hpp"
 
 class IcosphereCreator
 {
@@ -25,7 +26,10 @@ public:
 	int addVertex(Vertex vertex);
 	void addIndexTriplet(GLuint p1, GLuint p2, GLuint p3);
 	int findMiddlePointIndex(int p1, int p2);
+	
 	void subdivide(int n);
+
+	void perlinise(int seed);
 };
 
 #endif

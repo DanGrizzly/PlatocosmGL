@@ -13,21 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Mesh infrastructure">
+      <UniqueIdentifier>{5326935d-bfdd-46c9-be5f-959686399c1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Mesh infrastructure">
+      <UniqueIdentifier>{156ac3e3-618a-4300-b0f5-ef9f60e9488d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="infrastructure\shaderClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="infrastructure\EBO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="infrastructure\VAO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="infrastructure\VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="infrastructure\stb_image.cpp">
@@ -49,20 +46,23 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="infrastructure\Mesh.cpp">
+      <Filter>Source Files\Mesh infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="infrastructure\VAO.cpp">
+      <Filter>Source Files\Mesh infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="infrastructure\VBO.cpp">
+      <Filter>Source Files\Mesh infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="infrastructure\EBO.cpp">
+      <Filter>Source Files\Mesh infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="meshgen\BasicPlanet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="infrastructure\shaderClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="infrastructure\VAO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="infrastructure\VBO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="infrastructure\EBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resources\geometry.h">
@@ -83,13 +83,25 @@
     <ClInclude Include="infrastructure\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="infrastructure\Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="infrastructure\datastructs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="noisegen\PerlinNoise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="infrastructure\Mesh.h">
+      <Filter>Header Files\Mesh infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="infrastructure\VAO.h">
+      <Filter>Header Files\Mesh infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="infrastructure\VBO.h">
+      <Filter>Header Files\Mesh infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="infrastructure\EBO.h">
+      <Filter>Header Files\Mesh infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="meshgen\BasicPlanet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

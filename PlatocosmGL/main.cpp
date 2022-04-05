@@ -21,6 +21,7 @@
 #include "resources/geometry.h"
 
 #include "meshgen/IcosphereCreator.h"
+#include "meshgen/BasicPlanet.h"
 
 #include "noisegen/PerlinNoise.hpp"
 
@@ -35,40 +36,33 @@ int main(int argc, char* argv[]) {
 	glEnable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
+	glFrontFace(GL_CW);
+	glEnable(GL_CULL_FACE);
+
 	//Create shaders
 	Shader shaderProgram("shaders/default.vert", "shaders/default.frag");
 
-	//Create textures;
-	std::vector<Texture> noTextures = std::vector<Texture>();
-
 	//Create Mesh objects
-	//Mesh icosphere(spherePrimeVertices, spherePrimeIndices, noTextures);
-	IcosphereCreator icospherecreator = IcosphereCreator();
-	printf("Primitives in scene: Vertices: %d, Faces: %d\n", icospherecreator.meshVertices.size(), icospherecreator.meshIndices.size() / 3);
-	Mesh icosphere(icospherecreator.meshVertices, icospherecreator.meshIndices, noTextures);
+	//TO IMPLEMENT: Light source should have a star shining from it, implement a basic mesh with a new shader program that's always fully lit
 
-	icosphere.vertices[0].position[0] = 2 * icosphere.vertices[0].position[0];
-	icosphere.Update();
-
-	//Uniforms
-	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "frame");
+	//For planets, parameters in this order: int seed, glm::vec3 position, glm::vec3 color, float scale, int detail, int framesPerRot
+	BasicPlanet icosphere(12, glm::vec3(0.0f), glm::vec3(1.0, 0.0f, 0.0f), 0.7f, 6, 1000);
+	BasicPlanet icosphere2(987456, glm::vec3(0.0, 4.0f, 0.0f), glm::vec3(0.0, 1.0f, 0.0f), 1.3f, 6, 4000);
 
 	//Activate shaders
 	shaderProgram.Activate();
 
+	//Uniforms
+	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "frame");
 
-	//IMPLEMENT LIGHTING TO BE DONE WITH THIS...
+	//IMPLEMENT LIGHTING FOR STAR TO BE DONE WITH THIS...
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(5.0f, 0.0f, 0.0f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, lightPos);
 
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-
 	//shaderProgram.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	//glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 	//...
@@ -90,11 +84,6 @@ int main(int argc, char* argv[]) {
 
 		//Input events
 		theBackend.handleEvents(&quit);
-		if (theBackend.events[17] == 1) {
-			printf("Subdividing...\n");
-			icospherecreator.subdivide(1);
-			icosphere.ChangeMesh(icospherecreator.meshVertices, icospherecreator.meshIndices, noTextures);
-		}
 
 		//Send uniforms
 		glUniform1f(uniID, fmod(counter / 200.0, (2.0*PI)));
@@ -103,8 +92,13 @@ int main(int argc, char* argv[]) {
 		camera.Inputs(theBackend.events);
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
 
+		//Physics:
+		//TO IMPLEMENT: orbits, velocities already work, just modify them for each planet for each frame
+		//TO IMPLEMENT: make those orbits around the center of the light source
+
 		//The drawing:
 		icosphere.Draw(shaderProgram, camera);
+		icosphere2.Draw(shaderProgram, camera);
 		
 		//Refresh frame
 		theBackend.refreshScreen();
